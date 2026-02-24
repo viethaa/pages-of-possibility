@@ -1,0 +1,112 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(174, 227, 248, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 16px rgba(27, 48, 112, 0.1);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-pages {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+
+.logo-possibility {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--coral);
+  letter-spacing: -0.01em;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.navbar-links a {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: var(--coral);
+}
+
+.nav-cta {
+  background: var(--coral) !important;
+  color: #fff !important;
+  padding: 0.45rem 1.2rem;
+  border-radius: 50px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: #c94840 !important;
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar-toggle span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--navy);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle { display: flex; }
+
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid rgba(27,48,112,0.1);
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .navbar-links.open { display: flex; }
+}

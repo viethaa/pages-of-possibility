@@ -1,0 +1,140 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sky: #AEE3F8;
+  --sky-light: #D4F1FD;
+  --sky-mid: #7DCEF5;
+  --sky-deep: #4DAFE0;
+  --navy: #1B3070;
+  --navy-dark: #0D1E4E;
+  --coral: #E85A50;
+  --yellow: #F5A820;
+  --green: #5DC068;
+  --cyan: #2FB5D4;
+  --white: #FFFFFF;
+  --text: #1B3070;
+  --text-muted: #4A6B8A;
+  --max-width: 1100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section { padding: 5rem 0; }
+
+h1, h2, h3 { line-height: 1.2; color: var(--navy); }
+
+h2 { font-size: 2rem; margin-bottom: 1rem; }
+
+.section-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--navy-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(27,48,112,0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2.5px solid var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Cloud SVG decorations */
+.cloud-deco {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sky-bg {
+  background: linear-gradient(180deg, #AEE3F8 0%, #D4F1FD 100%);
+  position: relative;
+}
+
+.white-bg {
+  background: var(--white);
+  position: relative;
+}
+
+/* Wave divider bottom */
+.wave-bottom {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-top {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-bottom svg,
+.wave-top svg {
+  display: block;
+  width: 100%;
+}
