@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar'
+import FloatingNav from './components/FloatingNav'
 import Footer from './components/Footer'
 import Hero from './pages/Hero'
 import Overview from './pages/Overview'
@@ -12,7 +12,7 @@ import Support from './pages/Contact'
 export default function App() {
   return (
     <>
-      <Navbar />
+      <FloatingNav />
       <main>
         <Hero />
         <Overview />

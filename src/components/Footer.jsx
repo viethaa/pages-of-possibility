@@ -4,8 +4,8 @@ import './Footer.css'
 export default function Footer() {
   return (
     <footer className="footer sky-bg">
-      <Cloud width={180} color="rgba(255,255,255,0.6)" style={{ top: '5%', left: '-2%' }} />
-      <Cloud width={120} color="rgba(255,255,255,0.5)" style={{ top: '10%', right: '5%' }} />
+      <Cloud variant={2} color="rgba(255,255,255,0.6)" style={{ position:'absolute', width:'240px', top:'5%', left:'-2%' }} />
+      <Cloud variant={3} color="rgba(255,255,255,0.5)" style={{ position:'absolute', width:'180px', top:'10%', right:'5%' }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

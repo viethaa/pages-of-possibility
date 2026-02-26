@@ -43,8 +43,8 @@ const leaders = [
 export default function Team() {
   return (
     <section className="team sky-bg" id="team">
-      <Cloud width={160} color="white" style={{ top: '8%', right: '3%', opacity: 0.8 }} />
-      <Cloud width={120} color="white" style={{ bottom: '12%', left: '1%', opacity: 0.7 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'220px', top:'8%', right:'3%', opacity:0.8 }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'180px', bottom:'12%', left:'1%', opacity:0.7 }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

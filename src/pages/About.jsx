@@ -4,8 +4,8 @@ import './About.css'
 export default function About() {
   return (
     <section className="about sky-bg" id="about">
-      <Cloud width={200} color="white" style={{ top: '5%', right: '-2%', opacity: 0.8 }} />
-      <Cloud width={140} color="white" style={{ bottom: '8%', left: '2%', opacity: 0.7 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'260px', top:'5%', right:'-2%', opacity:0.8 }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'200px', bottom:'8%', left:'2%', opacity:0.7 }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

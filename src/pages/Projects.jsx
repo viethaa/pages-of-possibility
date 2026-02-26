@@ -34,8 +34,8 @@ const steps = [
 export default function Framework() {
   return (
     <section className="framework sky-bg" id="framework">
-      <Cloud width={180} color="white" style={{ top: '5%', left: '-1%', opacity: 0.8 }} />
-      <Cloud width={120} color="white" style={{ bottom: '10%', right: '2%', opacity: 0.75 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'240px', top:'5%', left:'-1%', opacity:0.8 }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'180px', bottom:'10%', right:'2%', opacity:0.75 }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
