@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
+const LOGO = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/Logo+1.png'
+
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Values', href: '#values' },
@@ -24,8 +26,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-inner">
         <a href="#" className="navbar-logo">
-          <span className="logo-pages">PAGES OF</span>
-          <span className="logo-possibility">POSSIBILITY</span>
+          <img src={LOGO} alt="Pages of Possibility" className="navbar-logo-img" />
         </a>
 
         <button className="navbar-toggle" onClick={() => setOpen(o => !o)} aria-label="Toggle menu">
