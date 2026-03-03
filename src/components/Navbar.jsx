@@ -39,7 +39,7 @@ export default function Navbar() {
               <a href={link.href} onClick={() => setOpen(false)}>{link.label}</a>
             </li>
           ))}
-          <li>
+          <li className="nav-cta-item">
             <a href="#support" className="nav-cta" onClick={() => setOpen(false)}>Donate</a>
           </li>
         </ul>

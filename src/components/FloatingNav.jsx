@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './FloatingNav.css'
 
+const LOGO = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/Logo+Only+Graphic.png'
+
 const sections = [
   { id: 'overview', label: 'Overview' },
   { id: 'about', label: 'About' },
@@ -44,7 +46,9 @@ export default function FloatingNav() {
   return (
     <nav className={`fnav ${visible ? 'fnav--on' : ''}`} aria-label="Section navigation">
       <div className="fnav__pill">
-        <a href="#" className="fnav__logo">POP</a>
+        <a href="#" className="fnav__logo">
+          <img src={LOGO} alt="Pages of Possibility" className="fnav__logo-img" />
+        </a>
         <div className="fnav__divider" />
         {sections.map(({ id, label }) => (
           <a

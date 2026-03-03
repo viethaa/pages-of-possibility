@@ -95,10 +95,6 @@ export default function Hero() {
         {/* ── Left: Text ── */}
         <div className="hero-text">
 
-          <span className="hero-badge anim-1">
-            <span className="badge-dot" />
-            Read &nbsp;·&nbsp; Dream &nbsp;·&nbsp; Explore
-          </span>
 
           <h1 className="hero-heading anim-2">
             <span className="h-light">Pages of</span>
