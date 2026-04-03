@@ -6,7 +6,6 @@ const LOGO = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/Logo+Only
 const sections = [
   { id: 'overview', label: 'Overview' },
   { id: 'about', label: 'About' },
-  { id: 'values', label: 'Values' },
   { id: 'framework', label: 'Framework' },
   { id: 'impact', label: 'Impact' },
   { id: 'budget', label: 'Action Plan' },

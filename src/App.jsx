@@ -7,7 +7,6 @@ import Footer from './components/Footer'
 import Hero from './pages/Hero'
 import Overview from './pages/Overview'
 import About from './pages/About'
-import Values from './pages/Goals'
 import Framework from './pages/Projects'
 import Impact from './pages/Initiatives'
 import Budget from './pages/Budget'
@@ -31,7 +30,6 @@ export default function App() {
         <Hero />
         <Overview />
         <About />
-        <Values />
         <Framework />
         <Impact />
         <Budget />
