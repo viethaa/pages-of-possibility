@@ -14,29 +14,35 @@ export default function Footer() {
       </div>
 
       <div className="container footer-inner">
+
         <div className="footer-brand">
-          <span className="footer-pages">✦ PAGES OF ✦</span>
-          <span className="footer-possibility">POSSIBILITY</span>
-          <p className="footer-tagline">Read ✦ Dream ✦ Explore</p>
+          <span className="footer-pages">✦ Pages of ✦</span>
+          <span className="footer-possibility">Possibility</span>
+          <div className="footer-divider" />
+          <span className="footer-tagline">Read · Dream · Explore</span>
         </div>
 
-        <div className="footer-links">
+        <nav className="footer-links" aria-label="Footer navigation">
+          <a href="#overview">Overview</a>
           <a href="#about">About</a>
           <a href="#values">Values</a>
           <a href="#framework">Framework</a>
           <a href="#impact">Impact</a>
+          <a href="#budget">Action Plan</a>
           <a href="#team">Team</a>
           <a href="#support">Support Us</a>
-        </div>
+        </nav>
 
         <div className="footer-contact">
           <a href="mailto:pagesofpossibilityhanoi@gmail.com">pagesofpossibilityhanoi@gmail.com</a>
+          <span className="footer-contact-sep" />
           <span>@pages_of_possibility.hn</span>
         </div>
 
         <p className="footer-copy">
           © {new Date().getFullYear()} Pages of Possibility · Concordia International School Hanoi · All rights reserved.
         </p>
+
       </div>
     </footer>
   )

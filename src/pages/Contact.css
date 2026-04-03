@@ -1,13 +1,19 @@
-.support { padding: 5rem 0; }
+.support { padding: 6rem 0; }
 
 .support-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 3.5rem;
 }
 
-.support-header p { color: var(--text-muted); font-size: 1.02rem; }
+.support-header p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  margin-top: 0.75rem;
+}
 
+/* ── Ways to support ── */
 .support-ways {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,26 +22,57 @@
 }
 
 .support-way {
-  border-radius: 18px;
-  padding: 1.75rem 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: var(--w-bg, var(--surface));
+  border: 1.5px solid var(--w-border, var(--border));
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.support-way::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--w-color, var(--cyan));
+  border-radius: 3px 3px 0 0;
 }
 
 .support-way:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
-.way-icon { margin-bottom: 0.75rem; }
+.way-icon-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
 
 .support-way h3 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  color: var(--w-color, var(--navy));
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
 }
 
-.support-way p { font-size: 0.88rem; color: var(--text-muted); }
+.support-way p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
 
+/* ── Donate cards ── */
 .support-donate {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -43,85 +80,157 @@
   margin-bottom: 2rem;
 }
 
-.donate-monetary,
-.donate-material {
-  background: #f7fbff;
-  border: 1.5px solid #daeef9;
-  border-radius: 18px;
-  padding: 1.75rem;
+.donate-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
 }
 
-.donate-monetary h3,
-.donate-material h3 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 0.5rem;
-}
-
-.donate-monetary p,
-.donate-material p {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+.donate-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.bank-info {
+.donate-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--navy);
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
+
+.donate-card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.donate-note {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.bank-info { display: flex; flex-direction: column; gap: 0.6rem; }
 
 .bank-row {
   display: flex;
-  gap: 1rem;
-  font-size: 0.875rem;
+  gap: 0.75rem;
+  font-size: 0.83rem;
+  align-items: flex-start;
 }
 
-.bank-row span { color: var(--text-muted); min-width: 110px; }
+.bank-row span {
+  color: var(--text-light);
+  min-width: 110px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
 .bank-row strong { color: var(--navy); }
 
-.contact-details { display: flex; flex-direction: column; gap: 0.6rem; }
+.contact-details { display: flex; flex-direction: column; gap: 0.75rem; }
 
 .contact-row {
   display: flex;
   gap: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--navy);
+  font-size: 0.875rem;
+  color: var(--text-muted);
   align-items: flex-start;
 }
 
-.support-contact {
-  background: var(--navy);
-  border-radius: 18px;
+.contact-row svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--cyan);
+}
+
+/* ── Contact channels ── */
+.support-channels {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  border-radius: var(--radius-xl);
   padding: 1.75rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
-.contact-item { display: flex; gap: 1rem; align-items: center; }
-.contact-icon { font-size: 1.8rem; }
-.contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 0.15rem; }
-.contact-value { font-size: 0.95rem; font-weight: 700; color: white; }
-a.contact-value:hover { color: var(--sky); text-decoration: underline; }
-.contact-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.channel-item:hover { opacity: 0.8; }
+
+.channel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.channel-icon--insta {
+  background: rgba(131,58,180,0.3);
+  border-color: rgba(131,58,180,0.5);
+}
+
+.channel-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.2rem;
+}
+
+.channel-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+}
+
+.channels-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+}
 
 .support-note {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
   max-width: 680px;
   margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
 @media (max-width: 768px) {
   .support-ways { grid-template-columns: 1fr; }
   .support-donate { grid-template-columns: 1fr; }
-  .support-contact { gap: 1.5rem; }
-  .contact-divider { display: none; }
+  .support-channels { gap: 1.5rem; padding: 1.5rem; }
+  .channels-divider { display: none; }
+}
+
+@media (max-width: 480px) {
+  .support-ways { max-width: 480px; margin-left: auto; margin-right: auto; }
 }

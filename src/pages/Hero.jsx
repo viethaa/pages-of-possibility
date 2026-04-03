@@ -162,18 +162,11 @@ export default function Hero() {
       {/* ── Cloud bank ── */}
       <div className="cloud-bank" aria-hidden="true">
         <img src={C2} alt="" className="cld bnk bnk-a" />
-        <img src={C1} alt="" className="cld bnk bnk-b" />
         <img src={C2} alt="" className="cld bnk bnk-c" />
-        <img src={C1} alt="" className="cld bnk bnk-d" />
       </div>
 
       <div className="hero-fade" />
 
-      {/* ── Scroll hint ── */}
-      <div className="scroll-hint anim-5" aria-hidden="true">
-        <div className="scroll-mouse"><div className="scroll-wheel" /></div>
-        <span>Scroll</span>
-      </div>
 
     </section>
   )

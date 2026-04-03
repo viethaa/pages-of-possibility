@@ -12,13 +12,31 @@
   --navy: #1B3070;
   --navy-dark: #0D1E4E;
   --coral: #E85A50;
+  --coral-light: #FFF0EF;
   --yellow: #F5A820;
+  --yellow-light: #FFFBEF;
   --green: #5DC068;
+  --green-light: #F0FBF1;
   --cyan: #2FB5D4;
+  --cyan-light: #EDF9FE;
   --white: #FFFFFF;
   --text: #1B3070;
   --text-muted: #4A6B8A;
+  --text-light: #7899B8;
+  --surface: #F8FAFE;
+  --border: #E2EEF8;
   --max-width: 1100px;
+
+  --shadow-sm: 0 1px 3px rgba(27,48,112,0.06), 0 1px 2px rgba(27,48,112,0.04);
+  --shadow-md: 0 4px 16px rgba(27,48,112,0.08), 0 2px 6px rgba(27,48,112,0.04);
+  --shadow-lg: 0 12px 40px rgba(27,48,112,0.12), 0 4px 12px rgba(27,48,112,0.06);
+  --shadow-xl: 0 24px 64px rgba(27,48,112,0.15), 0 8px 24px rgba(27,48,112,0.08);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 100px;
 }
 
 html {
@@ -26,11 +44,12 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--white);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -46,48 +65,74 @@ img { max-width: 100%; }
   padding: 0 1.5rem;
 }
 
-section { padding: 5rem 0; }
+section { padding: 6rem 0; }
 
-h1, h2, h3 { line-height: 1.2; color: var(--navy); }
+h1, h2, h3, h4 { line-height: 1.15; color: var(--navy); }
 
-h2 { font-size: 2rem; margin-bottom: 1rem; }
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
 
 .section-label {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cyan);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--cyan);
+  border-radius: 2px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   border: none;
+  letter-spacing: 0.01em;
 }
 
 .btn-primary {
   background: var(--navy);
   color: #fff;
+  box-shadow: 0 4px 14px rgba(27,48,112,0.3);
 }
 
 .btn-primary:hover {
   background: var(--navy-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(27,48,112,0.3);
+  box-shadow: 0 8px 24px rgba(27,48,112,0.35);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--navy);
-  border: 2.5px solid var(--navy);
+  border: 2px solid var(--navy);
 }
 
 .btn-outline:hover {
@@ -96,7 +141,6 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
   transform: translateY(-2px);
 }
 
-/* Cloud SVG decorations */
 .cloud-deco {
   position: absolute;
   pointer-events: none;
@@ -104,7 +148,7 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
 }
 
 .sky-bg {
-  background: linear-gradient(180deg, #AEE3F8 0%, #D4F1FD 100%);
+  background: linear-gradient(180deg, #c5eafc 0%, #dff4fd 50%, #eef9fe 100%);
   position: relative;
 }
 
@@ -113,7 +157,11 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
   position: relative;
 }
 
-/* Wave divider bottom */
+.surface-bg {
+  background: var(--surface);
+  position: relative;
+}
+
 .wave-bottom {
   position: absolute;
   bottom: -2px;
@@ -138,3 +186,35 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
   display: block;
   width: 100%;
 }
+
+/* ── Section header utility ── */
+.section-header {
+  max-width: 680px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+/* ── Tag/badge utility ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid currentColor;
+}
+
+/* AOS override — ensure transforms play well */
+[data-aos] { pointer-events: none; }
+[data-aos].aos-animate { pointer-events: auto; }

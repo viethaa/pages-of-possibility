@@ -5,7 +5,8 @@ const steps = [
   {
     number: '01',
     color: 'var(--coral)',
-    bg: '#FFF0EF',
+    bg: 'var(--coral-light)',
+    border: '#F5C0BC',
     icon: '📚',
     title: 'Providing Libraries & Multimedia Resources',
     description:
@@ -14,7 +15,8 @@ const steps = [
   {
     number: '02',
     color: 'var(--yellow)',
-    bg: '#FFFBEF',
+    bg: 'var(--yellow-light)',
+    border: '#F5DFA0',
     icon: '✍️',
     title: 'Hosting Writing Competitions',
     description:
@@ -23,7 +25,8 @@ const steps = [
   {
     number: '03',
     color: 'var(--green)',
-    bg: '#F0FBF1',
+    bg: 'var(--green-light)',
+    border: '#B5E5B9',
     icon: '📖',
     title: 'Collecting & Publishing Submissions',
     description:
@@ -34,8 +37,8 @@ const steps = [
 export default function Framework() {
   return (
     <section className="framework sky-bg" id="framework">
-      <Cloud variant={2} style={{ position:'absolute', width:'240px', top:'5%', left:'-1%', opacity:0.8 }} />
-      <Cloud variant={3} style={{ position:'absolute', width:'180px', bottom:'10%', right:'2%', opacity:0.75 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'240px', top:'5%', left:'-1%', opacity:0.6 }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'180px', bottom:'10%', right:'2%', opacity:0.55 }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -50,7 +53,8 @@ export default function Framework() {
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="framework-header">
+
+        <div className="framework-header" data-aos="fade-up">
           <span className="section-label">Our Approach</span>
           <h2>Our Project Framework</h2>
           <p>
@@ -61,24 +65,32 @@ export default function Framework() {
         </div>
 
         <div className="framework-steps">
-          {steps.map(step => (
-            <div key={step.number} className="step-card" style={{ background: step.bg }}>
-              <div className="step-header">
-                <span className="step-number" style={{ color: step.color }}>{step.number}</span>
-                <span className="step-icon">{step.icon}</span>
+          {steps.map((step, i) => (
+            <div
+              key={step.number}
+              className="step-card"
+              style={{ '--s-color': step.color, '--s-bg': step.bg, '--s-border': step.border }}
+              data-aos="fade-up"
+              data-aos-delay={i * 120}
+            >
+              <div className="step-number-badge">{step.number}</div>
+              <div className="step-icon-wrap">
+                <span>{step.icon}</span>
               </div>
-              <h3 style={{ color: step.color }}>{step.title}</h3>
-              <p>{step.description}</p>
+              <h3 className="step-title">{step.title}</h3>
+              <p className="step-desc">{step.description}</p>
+              {i < steps.length - 1 && <div className="step-connector" />}
             </div>
           ))}
         </div>
 
-        <div className="framework-footer">
+        <div className="framework-footer" data-aos="fade-up">
           <p>
             This three-step model allows Pages of Possibility to create a long-term impact — not just providing books,
             but fostering a culture of literacy and self-expression that continues to grow with each new initiative.
           </p>
         </div>
+
       </div>
     </section>
   )

@@ -14,6 +14,7 @@ const timeline = [
         description:
           'Pages of Possibility visited Na Phac Church, bringing not just books but a full day of engagement with the local community. We donated 400 books, establishing a library for children in the area. Together with the children, we decorated the library, introduced favorite books, read stories aloud, and played music — turning literature into an interactive experience.',
         highlight: '400 books donated',
+        highlightColor: 'var(--yellow)',
       },
     ],
   },
@@ -23,33 +24,36 @@ const timeline = [
     events: [
       {
         date: 'February 23, 2025',
-        location: 'National Children\'s Hospital — Endocrinology Dept.',
+        location: "National Children's Hospital — Endocrinology Dept.",
         tag: 'Completed',
         tagColor: 'var(--green)',
         title: 'First Hospital Library',
         description:
-          'Our first visit to the National Children\'s Hospital focused on the Endocrinology Department, where we donated 250 books, creating a small but meaningful library for children undergoing care.',
+          "Our first visit to the National Children's Hospital focused on the Endocrinology Department, where we donated 250 books, creating a small but meaningful library for children undergoing care.",
         highlight: '250 books donated',
+        highlightColor: 'var(--green)',
       },
       {
         date: 'March 15, 2025',
-        location: 'National Children\'s Hospital — 3 More Departments',
+        location: "National Children's Hospital — 3 More Departments",
         tag: 'Completed',
         tagColor: 'var(--green)',
         title: 'Expanded to Three More Departments',
         description:
           'We expanded our reach by visiting Cardiology & Otorhinolaryngology, Emergency Medicine & Poison Control, and the MRI Center — donating 450 books to each, ensuring that more children across different medical conditions had access to reading materials.',
         highlight: '1,500+ books total',
+        highlightColor: 'var(--green)',
       },
       {
         date: 'In Progress',
-        location: 'Na Phac Church & National Children\'s Hospital',
+        location: "Na Phac Church & National Children's Hospital",
         tag: 'In Progress',
         tagColor: 'var(--yellow)',
         title: 'Writing Competitions',
         description:
           'We are hosting writing competitions with themes like "Moments of Tet" at Na Phac Church, and organizing a writing competition at the National Children\'s Hospital to give patients a creative outlet — ensuring that they, too, have a chance to tell their stories.',
         highlight: null,
+        highlightColor: null,
       },
       {
         date: 'Upcoming — Aug/Sep 2025',
@@ -60,6 +64,7 @@ const timeline = [
         description:
           'Setting up libraries at 2–3 elementary schools in Viet Tri County, with at least 600 books per library. As the project continues to grow, we aim to expand our impact to additional orphanages, schools, and community centers.',
         highlight: '600+ books per library',
+        highlightColor: 'var(--coral)',
       },
     ],
   },
@@ -69,7 +74,8 @@ export default function Impact() {
   return (
     <section className="impact white-bg" id="impact">
       <div className="container">
-        <div className="impact-header">
+
+        <div className="impact-header" data-aos="fade-up">
           <span className="section-label">Our Story</span>
           <h2>Our Progress &amp; Impact</h2>
           <p>
@@ -79,28 +85,46 @@ export default function Impact() {
         </div>
 
         <div className="timeline">
-          {timeline.map(group => (
-            <div key={group.year} className="timeline-group">
-              <div className="timeline-year" style={{ background: group.color }}>
-                {group.year}
+          {timeline.map((group, gi) => (
+            <div key={group.year} className="timeline-group" data-aos="fade-up" data-aos-delay={gi * 80}>
+              <div className="timeline-year-track">
+                <div className="timeline-year-badge" style={{ background: group.color }}>
+                  {group.year}
+                </div>
+                <div className="timeline-year-line" style={{ borderColor: group.color }} />
               </div>
+
               <div className="timeline-events">
-                {group.events.map(event => (
-                  <div key={event.title} className="timeline-card">
+                {group.events.map((event, ei) => (
+                  <div
+                    key={event.title}
+                    className="timeline-card"
+                    data-aos="fade-up"
+                    data-aos-delay={gi * 80 + ei * 80}
+                  >
                     <div className="timeline-card-top">
                       <div className="timeline-meta">
-                        <span className="event-date">📅 {event.date}</span>
-                        <span className="event-location">📍 {event.location}</span>
+                        <span className="event-date">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                          {event.date}
+                        </span>
+                        <span className="event-location">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                          {event.location}
+                        </span>
                       </div>
-                      <span className="event-tag" style={{ color: event.tagColor, borderColor: event.tagColor }}>
+                      <span className="event-tag tag" style={{ color: event.tagColor, borderColor: event.tagColor }}>
                         {event.tag}
                       </span>
                     </div>
-                    <h3>{event.title}</h3>
-                    <p>{event.description}</p>
+
+                    <h3 className="event-title">{event.title}</h3>
+                    <p className="event-desc">{event.description}</p>
+
                     {event.highlight && (
-                      <div className="event-highlight">
-                        ✦ {event.highlight}
+                      <div className="event-highlight" style={{ '--h-color': event.highlightColor }}>
+                        <span className="highlight-dot" />
+                        {event.highlight}
                       </div>
                     )}
                   </div>
@@ -110,11 +134,15 @@ export default function Impact() {
           ))}
         </div>
 
-        <blockquote className="impact-quote">
-          "Our model — building libraries, organizing writing competitions, and publishing children's
-          works — is designed to create a lasting impact, not just through one-time donations but by
-          fostering sustainable access to books and creative opportunities."
+        <blockquote className="impact-quote" data-aos="fade-up">
+          <span className="iq-mark">"</span>
+          <p>
+            Our model — building libraries, organizing writing competitions, and publishing children's
+            works — is designed to create a lasting impact, not just through one-time donations but by
+            fostering sustainable access to books and creative opportunities.
+          </p>
         </blockquote>
+
       </div>
     </section>
   )

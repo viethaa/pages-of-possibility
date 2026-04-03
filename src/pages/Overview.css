@@ -1,57 +1,309 @@
-.overview { padding: 5rem 0 4rem; }
+/* ════════════════════════════════════════════════
+   KEYFRAMES
+════════════════════════════════════════════════ */
 
-.overview-header {
-  max-width: 760px;
-  margin: 0 auto 3rem;
-  text-align: center;
+@keyframes blob-morph {
+  0%,  100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+  25%       { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+  50%       { border-radius: 55% 45% 65% 35% / 45% 55% 45% 55%; }
+  75%       { border-radius: 40% 60% 50% 50% / 55% 45% 60% 40%; }
 }
 
-.overview-header p {
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-  font-size: 1.05rem;
+@keyframes blob-morph-2 {
+  0%,  100% { border-radius: 50% 50% 40% 60% / 45% 55% 50% 50%; }
+  33%        { border-radius: 60% 40% 55% 45% / 55% 45% 45% 55%; }
+  66%        { border-radius: 40% 60% 60% 40% / 40% 60% 55% 45%; }
 }
 
-.stats-grid {
+@keyframes ring-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg);   }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spark-pulse {
+  0%,  100% { opacity: 0.15; transform: scale(0.6); }
+  50%       { opacity: 1;    transform: scale(1.4); }
+}
+
+
+/* ════════════════════════════════════════════════
+   SECTION SHELL
+════════════════════════════════════════════════ */
+
+.overview {
+  padding: 7rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ov-wrap { position: relative; z-index: 1; }
+
+/* ════════════════════════════════════════════════
+   TOP: 2-COLUMN LAYOUT
+════════════════════════════════════════════════ */
+
+.ov-top {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 42fr 58fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+/* ── Left text column ── */
+.ov-text {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
-.stat-card {
-  background: #f7fbff;
-  border: 1.5px solid #daeef9;
-  border-radius: 20px;
-  padding: 2rem 1.25rem;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Heading */
+.ov-heading {
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy-dark);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(27,48,112,0.08);
+/* "Pages of" — DM Serif Display italic in cyan */
+.ov-heading em {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cyan);
 }
 
-.stat-number {
-  display: block;
+.ov-p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.ov-p strong { color: var(--navy); font-weight: 700; }
+
+/* ── Right visual column ── */
+.ov-visual {
+  position: relative;
+  padding: 1.5rem 2.5rem;
+}
+
+/* ── Main blob image ── */
+.ov-img { position: relative; }
+
+.ov-img-main {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.ov-img-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 108%; height: 108%;
+  border: 2px dashed rgba(47, 181, 212, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ring-spin 28s linear infinite;
+}
+
+/* ── Placeholder base ── */
+.ov-placeholder {
+  width: 100%;
+  background: linear-gradient(135deg, var(--sky-light) 0%, #c8e8f6 50%, #ddf2fb 100%);
+  border-radius: 55% 45% 50% 50% / 48% 52% 50% 52%;
+  overflow: hidden;
+  animation: blob-morph 10s ease-in-out infinite;
+  position: relative;
+}
+
+.ov-placeholder-main {
+  aspect-ratio: 4 / 2.9;
+}
+
+/* Camera hint on hover */
+.ov-placeholder::after {
+  content: '📷  Add photo';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(27,48,112,0.45);
+  opacity: 0;
+  transition: opacity 0.25s;
+  letter-spacing: 0.04em;
+}
+.ov-placeholder:hover::after { opacity: 1; }
+
+/* ── Placeholder inner content ── */
+.ov-ph-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.ov-ph-icon {
   font-size: 2.5rem;
+  filter: drop-shadow(0 2px 8px rgba(27,48,112,0.12));
+}
+
+.ov-ph-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+  opacity: 0.65;
+  text-align: center;
+}
+
+.ov-ph-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-style: italic;
+  border: 1.5px dashed rgba(47,181,212,0.4);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.75rem;
+}
+
+/* ── Secondary image row ── */
+.ov-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ov-img-sm .ov-placeholder {
+  aspect-ratio: 1 / 0.88;
+  border-radius: 50% 50% 45% 55% / 52% 48% 55% 45%;
+  animation: blob-morph-2 12s ease-in-out infinite;
+}
+
+.ov-img-sm-1 .ov-placeholder {
+  background: linear-gradient(135deg, #FFF0EF 0%, #fde8e6 60%, #fbd5d1 100%);
+  animation-delay: -3s;
+}
+
+.ov-img-sm-2 .ov-placeholder {
+  background: linear-gradient(135deg, var(--yellow-light) 0%, #fef0c8 60%, #fde8a0 100%);
+  animation-delay: -6s;
+}
+
+/* ── Decorative sparkle dots ── */
+.ov-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: spark-pulse ease-in-out infinite;
+}
+
+.ov-sp-1 { width: 10px; height: 10px; background: var(--coral);  top: 8%;    left: 18%;  animation-duration: 2.4s; }
+.ov-sp-2 { width:  7px; height:  7px; background: var(--yellow); top: 30%;   right: 10%; animation-duration: 3.1s; animation-delay: 0.7s; }
+.ov-sp-3 { width:  8px; height:  8px; background: var(--green);  bottom: 26%; left: 10%;  animation-duration: 2.8s; animation-delay: 1.2s; }
+.ov-sp-4 { width:  6px; height:  6px; background: var(--cyan);   bottom: 16%; right: 16%; animation-duration: 3.6s; animation-delay: 0.4s; }
+
+/* ════════════════════════════════════════════════
+   STATS BAR
+════════════════════════════════════════════════ */
+
+.ov-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.ov-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: background 0.25s ease;
+  cursor: default;
+}
+
+.ov-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 20%; bottom: 20%;
+  width: 1px;
+  background: var(--border);
+}
+
+.ov-stat:hover {
+  background: color-mix(in srgb, var(--s-color) 5%, white);
+}
+
+.ov-stat-num {
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   line-height: 1;
-  margin-bottom: 0.6rem;
+  color: var(--s-color, var(--navy));
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
-.stat-label {
-  font-size: 0.875rem;
+.ov-stat-label {
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
-  white-space: pre-line;
   line-height: 1.4;
+  max-width: 140px;
 }
 
-@media (max-width: 768px) {
-  .stats-grid { grid-template-columns: 1fr 1fr; }
+.ov-stat::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20%; right: 20%;
+  height: 3px;
+  background: var(--s-color, var(--cyan));
+  border-radius: 3px 3px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.ov-stat:hover::before { transform: scaleX(1); }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════ */
+
+@media (max-width: 960px) {
+  .ov-top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .ov-visual {
+    padding: 1rem 1.5rem;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .ov-chip { display: none; }
+}
+
+@media (max-width: 720px) {
+  .ov-stats-bar { grid-template-columns: 1fr 1fr; }
+  .ov-stat:nth-child(2)::after { display: none; }
+  .ov-stat { padding: 2rem 1rem; }
 }
 
 @media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
+  .ov-stats-bar { grid-template-columns: 1fr 1fr; }
+  .ov-visual { padding: 1rem 0.5rem; }
+  .ov-stat { padding: 1.5rem 0.75rem; }
+  .ov-stat-num { font-size: 1.75rem; }
 }

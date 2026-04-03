@@ -9,6 +9,7 @@ const sections = [
   { id: 'values', label: 'Values' },
   { id: 'framework', label: 'Framework' },
   { id: 'impact', label: 'Impact' },
+  { id: 'budget', label: 'Action Plan' },
   { id: 'team', label: 'Team' },
   { id: 'support', label: 'Support Us' },
 ]

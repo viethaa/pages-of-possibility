@@ -53,7 +53,8 @@
 
 /* ── Sonar ripple rings ── */
 @keyframes sonarRing {
-  0%   { transform: translate(-50%, -50%) scale(0.18); opacity: .75; }
+  0%   { transform: translate(-50%, -50%) scale(0.18); opacity: 0;   }
+  8%   { opacity: .75; }
   100% { transform: translate(-50%, -50%) scale(2.6);  opacity: 0;   }
 }
 
@@ -288,11 +289,14 @@
 
 /* Tagline */
 .hero-tagline {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,.88);
-  line-height: 1.8;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1.08rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.85);
+  line-height: 1.9;
   max-width: 420px;
-  text-shadow: 0 1px 6px rgba(0,0,0,.12);
+  letter-spacing: .02em;
+  text-shadow: 0 1px 8px rgba(0,0,0,.18);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -429,7 +433,7 @@
   border: 1.5px solid rgba(255,255,255,.55);
   pointer-events: none;
   z-index: 0;
-  animation: sonarRing 3.4s ease-out infinite;
+  animation: sonarRing 3.4s ease-out infinite backwards;
 }
 .wave-1 { animation-delay: 0s;    }
 .wave-2 { animation-delay: .68s;  }

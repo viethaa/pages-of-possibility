@@ -4,8 +4,8 @@ import './About.css'
 export default function About() {
   return (
     <section className="about sky-bg" id="about">
-      <Cloud variant={2} style={{ position:'absolute', width:'260px', top:'5%', right:'-2%', opacity:0.8 }} />
-      <Cloud variant={3} style={{ position:'absolute', width:'200px', bottom:'8%', left:'2%', opacity:0.7 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'280px', top:'5%', right:'-2%', opacity:0.6 }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'220px', bottom:'8%', left:'2%', opacity:0.5 }} />
 
       <div className="wave-top">
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -20,9 +20,11 @@ export default function About() {
       </div>
 
       <div className="container about-inner">
-        <div className="about-block">
+
+        {/* Background block */}
+        <div className="about-block" data-aos="fade-right">
           <span className="section-label">Background</span>
-          <h2>How & Why We Started</h2>
+          <h2>How &amp; Why We Started</h2>
           <p>
             Pages of Possibility was founded on the belief that every child, regardless of their circumstances,
             deserves access to books and educational resources. The project began in response to the lack of
@@ -32,32 +34,47 @@ export default function About() {
             Recognizing that books can open doors to imagination, knowledge, and opportunity, we set out to
             provide not just reading materials but also interactive ways for children to engage with literature.
             Over time, the project has grown to include writing competitions, reading corners, and plans for
-            multimedia libraries to ensure long-term access to learning.
+            multimedia libraries.
           </p>
+          <div className="about-founder-quote">
+            <div className="quote-mark">"</div>
+            <blockquote>
+              I've loved reading since I was young, and I wanted to create a project that could share
+              this love for reading with more students and children.
+            </blockquote>
+            <div className="quote-attr">— Nguyen Vu Ha Anh, Founder</div>
+          </div>
         </div>
 
+        {/* Divider */}
         <div className="about-divider" />
 
-        <div className="about-block">
+        {/* Mission & Vision block */}
+        <div className="about-block" data-aos="fade-left" data-aos-delay="100">
           <span className="section-label">Mission &amp; Vision</span>
           <h2>What Drives Us</h2>
-          <div className="mission-box">
-            <h3>Our Mission</h3>
-            <p>
-              To empower children through books, creativity, and education, providing them with the resources
-              and opportunities to dream bigger.
-            </p>
-          </div>
-          <div className="vision-box">
-            <h3>Our Vision</h3>
-            <p>
-              A future where every child has access to a well-rounded education — both through traditional books
-              and digital learning tools — regardless of their socioeconomic background. By fostering a culture
-              of reading and self-expression, we hope to inspire young minds and give them the tools they need
-              to build their futures.
-            </p>
+
+          <div className="mv-cards">
+            <div className="mv-card mv-card--mission">
+              <div className="mv-card-icon">🎯</div>
+              <h3>Our Mission</h3>
+              <p>
+                To empower children through books, creativity, and education, providing them with the resources
+                and opportunities to dream bigger.
+              </p>
+            </div>
+            <div className="mv-card mv-card--vision">
+              <div className="mv-card-icon">🔭</div>
+              <h3>Our Vision</h3>
+              <p>
+                A future where every child has access to a well-rounded education — both through traditional books
+                and digital learning tools — regardless of their socioeconomic background, fostering a culture
+                of reading and self-expression.
+              </p>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   )
