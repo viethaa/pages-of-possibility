@@ -3,9 +3,8 @@ import './Team.css'
 const members = [
   {
     name: 'Nguyen Vu Ha Anh',
-    nickname: '"Panda"',
+    watermark: 'Ha Anh',
     role: 'President & Founder',
-    initial: 'A',
     accent: '#E85A50',
     photoGrad: 'linear-gradient(160deg, #3d1818 0%, #1B3070 100%)',
     description:
@@ -13,9 +12,8 @@ const members = [
   },
   {
     name: 'Nguyen Chau Anh',
-    nickname: null,
+    watermark: 'Chau Anh',
     role: 'Head of Marketing',
-    initial: 'A',
     accent: '#2FB5D4',
     photoGrad: 'linear-gradient(160deg, #082d3d 0%, #0D1E4E 100%)',
     description:
@@ -23,9 +21,8 @@ const members = [
   },
   {
     name: 'Dang Vy Le',
-    nickname: null,
+    watermark: 'Le',
     role: 'Head of Operations',
-    initial: 'L',
     accent: '#5DC068',
     photoGrad: 'linear-gradient(160deg, #0b2010 0%, #0D2A1A 100%)',
     description:
@@ -33,9 +30,8 @@ const members = [
   },
   {
     name: 'Jeny Park',
-    nickname: null,
+    watermark: 'Jeny',
     role: 'Head of Design',
-    initial: 'J',
     accent: '#F5A820',
     photoGrad: 'linear-gradient(160deg, #2d1c00 0%, #1B3070 100%)',
     description:
@@ -91,8 +87,8 @@ export default function Team() {
                 {/* Photo area */}
                 <div className="tm-photo">
                   <div className="tm-photo-bg" />
-                  {/* Large watermark initial */}
-                  <div className="tm-photo-watermark">{m.initial}</div>
+                  {/* Ghost name watermark */}
+                  <div className="tm-photo-watermark">{m.watermark}</div>
                   {/* Placeholder content */}
                   <div className="tm-photo-placeholder">
                     <div className="tm-camera"><CameraIcon /></div>
@@ -103,14 +99,13 @@ export default function Team() {
                     <CameraIcon />
                     <span>Add photo</span>
                   </div>
-                  {/* Role badge anchored to bottom of photo */}
+                  {/* Role pill — top center of photo */}
                   <div className="tm-role-pill">{m.role}</div>
                 </div>
 
                 {/* Info */}
                 <div className="tm-card-body">
                   <h3 className="tm-card-name">{m.name}</h3>
-                  {m.nickname && <div className="tm-card-nick">{m.nickname}</div>}
                   <p className="tm-card-desc">{m.description}</p>
                 </div>
               </div>

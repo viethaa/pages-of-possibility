@@ -4,6 +4,34 @@
   padding: 0;
 }
 
+/* ── Cloud drift animations ── */
+@keyframes cloud-a {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(38px, -18px); }
+}
+@keyframes cloud-b {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-32px, 16px); }
+}
+@keyframes cloud-c {
+  0%, 100% { transform: translate(0, 0); }
+  33%       { transform: translate(28px, -14px); }
+  66%       { transform: translate(-20px, 10px); }
+}
+@keyframes cloud-d {
+  0%, 100% { transform: translate(0, 0); }
+  40%       { transform: translate(-36px, -20px); }
+  80%       { transform: translate(22px, 14px); }
+}
+@keyframes cloud-e {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(30px, 18px); }
+}
+@keyframes cloud-f {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-40px, -14px); }
+}
+
 :root {
   --sky: #AEE3F8;
   --sky-light: #D4F1FD;

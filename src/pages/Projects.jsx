@@ -66,10 +66,12 @@ export default function Framework() {
   return (
     <section className="framework sky-bg" id="framework">
 
-      <Cloud variant={2} style={{ position:'absolute', width:'260px', top:'5%',  left:'-2%',  opacity:0.45, zIndex:0 }} />
-      <Cloud variant={3} style={{ position:'absolute', width:'200px', top:'12%', right:'1%',  opacity:0.38, zIndex:0 }} />
-      <Cloud variant={1} style={{ position:'absolute', width:'180px', bottom:'14%', left:'1%', opacity:0.32, zIndex:0 }} />
-      <Cloud variant={4} style={{ position:'absolute', width:'220px', bottom:'8%', right:'-2%', opacity:0.30, zIndex:0 }} />
+      <Cloud variant={2} style={{ position:'absolute', width:'280px', top:'3%',    left:'-2%',   opacity:0.45, zIndex:0, animation:'cloud-a 14s ease-in-out infinite' }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'210px', top:'10%',   right:'1%',   opacity:0.38, zIndex:0, animation:'cloud-b 18s ease-in-out infinite' }} />
+      <Cloud variant={1} style={{ position:'absolute', width:'200px', top:'38%',   left:'5%',    opacity:0.28, zIndex:0, animation:'cloud-c 22s ease-in-out infinite' }} />
+      <Cloud variant={4} style={{ position:'absolute', width:'260px', top:'50%',   right:'-1%',  opacity:0.26, zIndex:0, animation:'cloud-d 16s ease-in-out infinite' }} />
+      <Cloud variant={1} style={{ position:'absolute', width:'190px', bottom:'18%',left:'-1%',   opacity:0.32, zIndex:0, animation:'cloud-e 20s ease-in-out infinite' }} />
+      <Cloud variant={3} style={{ position:'absolute', width:'240px', bottom:'5%', right:'-2%',  opacity:0.30, zIndex:0, animation:'cloud-f 13s ease-in-out infinite' }} />
 
 
       <div className="wave-bottom">

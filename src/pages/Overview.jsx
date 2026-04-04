@@ -44,6 +44,7 @@ function AnimStat({ target, suffix, label, color, delay }) {
       style={{ '--s-color': color }}
       data-aos="fade-up"
       data-aos-delay={delay}
+      data-aos-duration="700"
     >
       <span className="ov-stat-num">
         {target >= 1000 ? val.toLocaleString() : val}{suffix}
@@ -140,10 +141,10 @@ export default function Overview() {
           </div>
         </div>
 
-        {/* ════════ BOTTOM: Stats bar ════════ */}
+        {/* ════════ BOTTOM: Stats ════════ */}
         <div className="ov-stats-bar">
           {stats.map((s, i) => (
-            <AnimStat key={i} {...s} delay={i * 100} />
+            <AnimStat key={i} {...s} delay={i * 120} />
           ))}
         </div>
 

@@ -216,66 +216,45 @@
 .ov-stats-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  gap: 1.25rem;
 }
 
 .ov-stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 1.75rem 2rem;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-top: 3px solid var(--s-color, var(--cyan));
+  border-radius: var(--radius-xl);
   position: relative;
-  transition: background 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: default;
 }
 
-.ov-stat:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0; top: 20%; bottom: 20%;
-  width: 1px;
-  background: var(--border);
-}
-
 .ov-stat:hover {
-  background: color-mix(in srgb, var(--s-color) 5%, white);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .ov-stat-num {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 400;
   line-height: 1;
   color: var(--s-color, var(--navy));
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
 }
 
 .ov-stat-label {
   font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
-  line-height: 1.4;
-  max-width: 140px;
+  line-height: 1.5;
 }
-
-.ov-stat::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 20%; right: 20%;
-  height: 3px;
-  background: var(--s-color, var(--cyan));
-  border-radius: 3px 3px 0 0;
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
-}
-
-.ov-stat:hover::before { transform: scaleX(1); }
 
 /* ════════════════════════════════════════════════
    RESPONSIVE
@@ -297,13 +276,12 @@
 
 @media (max-width: 720px) {
   .ov-stats-bar { grid-template-columns: 1fr 1fr; }
-  .ov-stat:nth-child(2)::after { display: none; }
-  .ov-stat { padding: 2rem 1rem; }
+  .ov-stat { padding: 1.5rem 1.25rem; }
 }
 
 @media (max-width: 480px) {
   .ov-stats-bar { grid-template-columns: 1fr 1fr; }
   .ov-visual { padding: 1rem 0.5rem; }
-  .ov-stat { padding: 1.5rem 0.75rem; }
-  .ov-stat-num { font-size: 1.75rem; }
+  .ov-stat { padding: 1.25rem 1rem; }
+  .ov-stat-num { font-size: 2rem; }
 }

@@ -22,8 +22,10 @@ export default function FloatingNav() {
     window.addEventListener('scroll', onScroll, { passive: true })
 
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) }),
-      { rootMargin: '-38% 0px -38% 0px', threshold: 0 }
+      entries => {
+        entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) })
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
     )
     sections.forEach(({ id }) => {
       const el = document.getElementById(id)

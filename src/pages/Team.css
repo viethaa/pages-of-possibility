@@ -122,26 +122,28 @@
   transform: scale(1.06);
 }
 
-/* Watermark initial */
+/* Ghost name watermark */
 .tm-photo-watermark {
   position: absolute;
-  bottom: -5%;
-  right: -3%;
+  bottom: -0.25rem;
+  right: -0.2rem;
   font-family: 'DM Serif Display', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 9rem;
+  font-size: 3.4rem;
   line-height: 1;
-  color: var(--accent);
-  opacity: 0.12;
+  color: white;
+  opacity: 0.18;
   user-select: none;
   pointer-events: none;
   letter-spacing: -0.05em;
   transition: opacity 0.35s ease;
+  white-space: nowrap;
+  z-index: 0;
 }
 
 .tm-card:hover .tm-photo-watermark {
-  opacity: 0.18;
+  opacity: 0.28;
 }
 
 /* Centered placeholder content */
@@ -155,6 +157,7 @@
   gap: 0.75rem;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  z-index: 1;
 }
 
 .tm-camera {
@@ -204,10 +207,11 @@
 .tm-photo:hover .tm-photo-add  { opacity: 1; }
 .tm-photo:hover .tm-photo-placeholder { opacity: 0; }
 
-/* Role pill — anchored to photo bottom */
+
+/* Role pill — top center of photo */
 .tm-role-pill {
   position: absolute;
-  bottom: 1rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -221,17 +225,11 @@
   text-transform: uppercase;
   box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 45%, transparent);
   z-index: 2;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.tm-card:hover .tm-role-pill {
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 /* ── Card body ── */
 .tm-card-body {
-  padding: 1.5rem 1.4rem 1.75rem;
+  padding: 1.25rem 1.4rem 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;

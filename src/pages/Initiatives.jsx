@@ -197,6 +197,14 @@ export default function Impact() {
 
   return (
     <section className="impact white-bg" id="impact">
+
+      {/* Wave bottom — draws sky into white for seamless Budget transition */}
+      <div className="wave-bottom ig-wave-bottom">
+        <svg viewBox="0 0 1440 130" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,55 C240,110 480,10 720,60 C960,110 1200,20 1440,65 L1440,130 L0,130 Z" fill="#c5eafc" />
+        </svg>
+      </div>
+
       <div className="container ig-wrap">
 
         {/* ── Header ── */}
@@ -244,12 +252,9 @@ export default function Impact() {
             rel="noopener noreferrer"
             className="ig-cta-btn"
           >
-            <InstagramIcon size={18} />
-            See all posts on Instagram
+            <InstagramIcon size={20} />
+            <span>See all posts on Instagram</span>
           </a>
-          <p className="ig-cta-sub">
-            Follow us to stay updated on every new library, competition, and story we share.
-          </p>
         </div>
 
       </div>

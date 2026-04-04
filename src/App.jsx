@@ -16,10 +16,11 @@ import Support from './pages/Contact'
 export default function App() {
   useEffect(() => {
     AOS.init({
-      duration: 700,
+      duration: 800,
       once: true,
-      easing: 'ease-out-cubic',
-      offset: 60,
+      easing: 'ease-out-quart',
+      offset: 80,
+      anchorPlacement: 'top-bottom',
     })
   }, [])
 
