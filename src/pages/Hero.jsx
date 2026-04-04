@@ -2,7 +2,7 @@ import './Hero.css'
 
 const C1   = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/CloudLogo1.png'
 const C2   = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/CloudLogo2.png'
-const LOGO = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/Logo+1.png'
+const LOGO = 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/Logo+Only+Graphic.png'
 
 /* White sparkles */
 const STARS = [
@@ -92,71 +92,35 @@ export default function Hero() {
       {/* ════════ CONTENT ════════ */}
       <div className="hero-inner container">
 
-        {/* ── Left: Text ── */}
-        <div className="hero-text">
+        <img src={LOGO} alt="Pages of Possibility" className="hero-logo anim-1" />
 
+        <h1 className="hero-heading anim-2">
+          Pages of Possibility
+        </h1>
 
-          <h1 className="hero-heading anim-2">
-            <span className="h-light">Pages of</span>
-            <span className="h-heavy">Possibility</span>
-          </h1>
-
-          <p className="hero-tagline anim-3">
-            Bringing books, libraries, and creative opportunity
-            to children across Vietnam.
-          </p>
-
-          {/* ── Stats — clean single pill, all white ── */}
-          <div className="hero-stats anim-4">
-            <div className="hstat">
-              <strong>1,500+</strong>
-              <span>Books donated</span>
-            </div>
-            <div className="hstat-sep" />
-            <div className="hstat">
-              <strong>3+</strong>
-              <span>Locations</span>
-            </div>
-            <div className="hstat-sep" />
-            <div className="hstat">
-              <strong>20+</strong>
-              <span>Volunteers</span>
-            </div>
-          </div>
-
-          <div className="hero-ctas anim-5">
-            <a href="#overview" className="cta-primary">Discover Our Story</a>
-            <a href="#support"  className="cta-ghost">Support Us</a>
-          </div>
-
+        {/* Decorative accent bar */}
+        <div className="hero-accent anim-3" aria-hidden="true">
+          <span className="hero-accent-dot" style={{ background: '#E85A50' }} />
+          <span className="hero-accent-line" />
+          <span className="hero-accent-dot" style={{ background: '#F5A820' }} />
+          <span className="hero-accent-line" />
+          <span className="hero-accent-dot" style={{ background: '#5DC068' }} />
+          <span className="hero-accent-line" />
+          <span className="hero-accent-dot" style={{ background: '#2FB5D4' }} />
         </div>
 
-        {/* ── Right: Logo visual ── */}
-        <div className="hero-visual anim-visual">
-          <div className="logo-scene">
+        <p className="hero-tagline anim-3">
+          Bringing books and stories to children across Vietnam.
+        </p>
 
-            {/* Sonar ripple waves — burst outward from center */}
-            <div className="wave wave-1" />
-            <div className="wave wave-2" />
-            <div className="wave wave-3" />
-            <div className="wave wave-4" />
-            <div className="wave wave-5" />
+      </div>
 
-            {/* Static glow disc */}
-            <div className="logo-disc" />
-            <div className="logo-halo" />
-
-            {/* Orbit cloud accents */}
-            <img src={C1} alt="" aria-hidden="true" className="cld orb orb-tl" />
-            <img src={C2} alt="" aria-hidden="true" className="cld orb orb-tr" />
-            <img src={C1} alt="" aria-hidden="true" className="cld orb orb-br" />
-
-            {/* The logo — sits on top */}
-            <img src={LOGO} alt="Pages of Possibility" className="hero-logo" />
-
-          </div>
+      {/* Scroll hint */}
+      <div className="scroll-hint">
+        <div className="scroll-mouse">
+          <div className="scroll-wheel" />
         </div>
-
+        <span>Scroll</span>
       </div>
 
       {/* ── Cloud bank ── */}

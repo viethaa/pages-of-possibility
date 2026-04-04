@@ -15,11 +15,10 @@ const sections = [
 
 export default function FloatingNav() {
   const [active, setActive]   = useState('')
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.6)
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', () => {}, { passive: true })
 
     const observer = new IntersectionObserver(
       entries => {
@@ -33,7 +32,6 @@ export default function FloatingNav() {
     })
 
     return () => {
-      window.removeEventListener('scroll', onScroll)
       observer.disconnect()
     }
   }, [])
