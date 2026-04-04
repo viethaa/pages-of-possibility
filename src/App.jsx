@@ -30,10 +30,10 @@ export default function App() {
         <Hero />
         <Overview />
         <About />
+        <Team />
         <Framework />
         <Impact />
         <Budget />
-        <Team />
         <Support />
       </main>
       <Footer />

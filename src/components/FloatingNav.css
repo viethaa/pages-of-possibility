@@ -1,14 +1,28 @@
+/* ════════════════════════════════════════════════
+   KEYFRAMES
+════════════════════════════════════════════════ */
+
+@keyframes nav-in {
+  from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+  to   { transform: translateX(-50%) translateY(0);     opacity: 1; }
+}
+
+
+/* ════════════════════════════════════════════════
+   SHELL
+════════════════════════════════════════════════ */
+
 .fnav {
   position: fixed;
-  top: 16px;
+  top: 20px;
   left: 50%;
-  transform: translateX(-50%) translateY(-90px);
+  transform: translateX(-50%) translateY(-24px);
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
-    opacity   0.3s ease;
+    transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
+    opacity   0.35s ease;
   white-space: nowrap;
 }
 
@@ -18,78 +32,163 @@
   pointer-events: all;
 }
 
-/* ── Dark frosted glass pill ── */
-.fnav__pill {
+/* ════════════════════════════════════════════════
+   BAR  — light frosted glass card
+════════════════════════════════════════════════ */
+
+.fnav__bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+
+  /* Light frosted glass — matches site's panel style */
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 0.35rem 0.35rem;
+
+  box-shadow:
+    0 2px 12px  rgba(27, 48, 112, 0.08),
+    0 12px 40px rgba(27, 48, 112, 0.10),
+    0 1px  0    rgba(255, 255, 255, 1) inset;
+}
+
+/* ════════════════════════════════════════════════
+   BRAND  — logo + stacked "Pages of / Possibility"
+════════════════════════════════════════════════ */
+
+.fnav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.2rem 0.8rem 0.2rem 0.5rem;
+  border-radius: 14px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.22s ease;
+}
+
+.fnav__brand:hover {
+  background: rgba(27, 48, 112, 0.05);
+}
+
+.fnav__logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+  filter: drop-shadow(0 2px 6px rgba(27, 48, 112, 0.15));
+}
+
+.fnav__brand:hover .fnav__logo {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.fnav__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  gap: 0;
+}
+
+.fnav__brand-top {
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  opacity: 0.55;
+}
+
+.fnav__brand-em {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--cyan);
+  letter-spacing: -0.01em;
+}
+
+/* ════════════════════════════════════════════════
+   SEPARATOR
+════════════════════════════════════════════════ */
+
+.fnav__sep {
+  width: 1px;
+  height: 26px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(27, 48, 112, 0.12) 30%,
+    rgba(27, 48, 112, 0.12) 70%,
+    transparent
+  );
+  flex-shrink: 0;
+  margin: 0 0.2rem;
+}
+
+/* ════════════════════════════════════════════════
+   LINKS
+════════════════════════════════════════════════ */
+
+.fnav__links {
   display: flex;
   align-items: center;
   gap: 0.1rem;
-  background: rgba(10, 16, 36, 0.80);
-  backdrop-filter: blur(28px) saturate(1.6);
-  -webkit-backdrop-filter: blur(28px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 100px;
-  padding: 0.28rem 0.28rem;
-  box-shadow:
-    0 2px 8px  rgba(0, 0, 0, 0.30),
-    0 16px 48px rgba(0, 0, 0, 0.40),
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  padding: 0 0.2rem;
 }
 
-/* ── Logo — bigger image, zero vertical padding so pill height stays the same ── */
-.fnav__logo {
-  display: flex;
-  align-items: center;
-  padding: 0 0.75rem;
-  flex-shrink: 0;
-  text-decoration: none;
-}
-
-.fnav__logo-img {
-  height: 36px;
-  width: auto;
-  display: block;
-  transition: transform 0.22s ease, filter 0.22s ease;
-  filter: brightness(1.15) drop-shadow(0 0 6px rgba(255, 255, 255, 0.12));
-}
-
-.fnav__logo:hover .fnav__logo-img {
-  transform: scale(1.08);
-  filter: brightness(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.24));
-}
-
-/* ── Divider ── */
-.fnav__divider {
-  width: 1px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.14);
-  margin: 0 0.3rem;
-  flex-shrink: 0;
-}
-
-/* ── Nav links ── */
-.fnav__item {
-  padding: 0.42rem 0.9rem;
-  border-radius: 100px;
-  font-size: 0.78rem;
+.fnav__link {
+  position: relative;
+  padding: 0.42rem 0.85rem 0.52rem;
+  border-radius: 12px;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.50);
+  letter-spacing: 0.01em;
+  color: rgba(27, 48, 112, 0.45);
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.fnav__item:hover {
-  background: rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.92);
+.fnav__link:hover {
+  background: rgba(27, 48, 112, 0.05);
+  color: var(--navy);
 }
 
-/* ── Active: white frosted pill ── */
-.fnav__item--active {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+/* ── Active state ── */
+.fnav__link--active {
+  background: var(--navy);
+  color: #fff !important;
+  box-shadow:
+    0 2px 12px rgba(27, 48, 112, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-@media (max-width: 900px) {
+.fnav__link--active:hover {
+  background: var(--navy);
+}
+
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════ */
+
+@media (max-width: 1080px) {
+  .fnav__link { padding: 0.4rem 0.65rem 0.5rem; font-size: 0.72rem; }
+  .fnav__brand-em { font-size: 0.82rem; }
+}
+
+@media (max-width: 860px) {
+  /* Hide text labels, show only logo brand + icon links */
+  .fnav__links  { gap: 0; }
+  .fnav__link   { padding: 0.4rem 0.55rem 0.5rem; font-size: 0.7rem; }
+  .fnav__brand-text { display: none; }
+  .fnav__brand  { padding: 0.2rem 0.5rem; }
+}
+
+@media (max-width: 640px) {
   .fnav { display: none; }
 }
