@@ -100,12 +100,11 @@ export default function Overview() {
 
             {/* Main image — large cloud blob */}
             <div className="ov-img ov-img-main">
-              <div className="ov-placeholder ov-placeholder-main">
-                <div className="ov-ph-inner">
-                  <span className="ov-ph-icon">🏥</span>
-                  <span className="ov-ph-text">National Children's Hospital</span>
-                  <span className="ov-ph-sub">Your photo here</span>
-                </div>
+              <div className="ov-photo ov-photo-main">
+                <img
+                  src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/overview1.jpg"
+                  alt="Pages of Possibility — National Children's Hospital"
+                />
               </div>
               {/* Animated cloud border overlay */}
               <div className="ov-img-ring" />
@@ -114,21 +113,19 @@ export default function Overview() {
             {/* Secondary images */}
             <div className="ov-img-row">
               <div className="ov-img ov-img-sm ov-img-sm-1">
-                <div className="ov-placeholder">
-                  <div className="ov-ph-inner">
-                    <span className="ov-ph-icon">⛪</span>
-                    <span className="ov-ph-text">Na Phac Church</span>
-                    <span className="ov-ph-sub">Photo coming soon</span>
-                  </div>
+                <div className="ov-photo ov-photo-sm ov-photo-sm-1">
+                  <img
+                    src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/overview2.JPG"
+                    alt="Pages of Possibility — Na Phac Church"
+                  />
                 </div>
               </div>
               <div className="ov-img ov-img-sm ov-img-sm-2">
-                <div className="ov-placeholder">
-                  <div className="ov-ph-inner">
-                    <span className="ov-ph-icon">📖</span>
-                    <span className="ov-ph-text">Reading Corner</span>
-                    <span className="ov-ph-sub">Photo coming soon</span>
-                  </div>
+                <div className="ov-photo ov-photo-sm ov-photo-sm-2">
+                  <img
+                    src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/overview3.JPG"
+                    alt="Pages of Possibility — Reading Corner"
+                  />
                 </div>
               </div>
             </div>

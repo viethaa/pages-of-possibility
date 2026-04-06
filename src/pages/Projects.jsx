@@ -15,7 +15,8 @@ const pillars = [
     title: 'Providing Libraries & Multimedia Resources',
     description:
       'We establish reading spaces in hospitals, orphanages, and underserved communities — donating books, computers, and digital learning tools so every child has both physical and digital access to literature.',
-    photoLabel: 'Library Setup',
+    photoSrc: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/framework1.JPG',
+    photoAlt: 'Library Setup',
   },
   {
     number: '02',
@@ -30,7 +31,8 @@ const pillars = [
     title: 'Hosting Writing Competitions',
     description:
       'We believe every child has a story to tell. Our writing competitions encourage storytelling, poetry, and personal essays — building confidence and nurturing voices that deserve to be heard.',
-    photoLabel: 'Writing Competition',
+    photoSrc: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/framework2.JPG',
+    photoAlt: 'Writing Competition',
   },
   {
     number: '03',
@@ -48,19 +50,11 @@ const pillars = [
     title: 'Collecting & Publishing Submissions',
     description:
       "A child's voice deserves to be amplified. We curate outstanding submissions and work toward publishing selected works — through printed collections, digital platforms, or public showcases.",
-    photoLabel: 'Published Collection',
+    photoSrc: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/framework3.jpg',
+    photoAlt: 'Published Collection',
   },
 ]
 
-function CameraIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-      <circle cx="12" cy="13" r="4"/>
-    </svg>
-  )
-}
 
 export default function Framework() {
   return (
@@ -104,17 +98,8 @@ export default function Framework() {
             >
               {/* Photo area */}
               <div className="fw-photo">
-                <div className="fw-photo-bg" />
+                <img src={p.photoSrc} alt={p.photoAlt} className="fw-photo-img" />
                 <div className="fw-photo-watermark">{p.number}</div>
-                <div className="fw-photo-center">
-                  <div className="fw-camera"><CameraIcon /></div>
-                  <span className="fw-photo-label">{p.photoLabel}</span>
-                  <span className="fw-photo-hint">Photo coming soon</span>
-                </div>
-                <div className="fw-photo-hover">
-                  <CameraIcon />
-                  <span>Add photo</span>
-                </div>
               </div>
 
               {/* Content */}

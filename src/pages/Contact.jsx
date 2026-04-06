@@ -51,7 +51,7 @@ export default function Support() {
                 </div>
               </div>
               <p className="sp-transfer-note">
-                Include <strong>"POP"</strong> in your transfer note
+                Include "POP" in your transfer note
               </p>
             </div>
 

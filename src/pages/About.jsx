@@ -5,17 +5,15 @@ const storyRows = [
   {
     index: '01',
     accentColor: 'var(--coral)',
-    photoGradient: 'linear-gradient(135deg, #AEE3F8 0%, #c8e8f6 60%, #ddf2fb 100%)',
-    photoIcon: '🏥',
-    photoLabel: "National Children's Hospital",
+    photoSrc: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/howandwhy1.JPG',
+    photoAlt: "National Children's Hospital",
     text: 'Pages of Possibility was founded on the belief that every child, regardless of their circumstances, deserves access to books and educational resources. The project began in response to the lack of reading materials available to children in hospitals, orphanages, and underserved communities.',
   },
   {
     index: '02',
     accentColor: 'var(--cyan)',
-    photoGradient: 'linear-gradient(135deg, #FFF0EF 0%, #fde8e6 60%, #fbd5d1 100%)',
-    photoIcon: '⛪',
-    photoLabel: 'Na Phac Church, Bac Kan',
+    photoSrc: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/howandwhy2.JPG',
+    photoAlt: 'Na Phac Church, Bac Kan',
     text: 'Recognizing that books can open doors to imagination, knowledge, and opportunity, we set out to provide not just reading materials but also interactive ways for children to engage with literature. Over time, the project has grown to include writing competitions, reading corners, and plans for multimedia libraries.',
     flip: true,
   },
@@ -116,17 +114,8 @@ export default function About() {
 
               {/* Photo side */}
               <div className="ab-story-photo">
-                <div
-                  className="ab-photo-blob"
-                  style={{ background: row.photoGradient }}
-                >
-                  <div className="ab-photo-inner">
-                    <span className="ab-photo-icon">{row.photoIcon}</span>
-                    <span className="ab-photo-label">{row.photoLabel}</span>
-                    <span className="ab-photo-hint">Photo coming soon</span>
-                  </div>
-                  {/* hover hint */}
-                  <div className="ab-photo-hover">📷 Add photo</div>
+                <div className="ab-photo-blob">
+                  <img src={row.photoSrc} alt={row.photoAlt} className="ab-photo-img" />
                 </div>
                 {/* Small sparkle dots */}
                 <div className="ab-photo-dot ab-dot-1" style={{ background: row.accentColor }} />
@@ -144,7 +133,11 @@ export default function About() {
                 that could share this love for reading with more students and children.
               </blockquote>
               <footer className="ab-quote-footer">
-                <div className="ab-quote-avatar">A</div>
+                <img
+                  src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/PANDA.PNG"
+                  alt="Nguyen Vu Ha Anh"
+                  className="ab-quote-avatar"
+                />
                 <div>
                   <div className="ab-quote-name">Nguyen Vu Ha Anh</div>
                   <div className="ab-quote-role">Founder &amp; President · Concordia International School Hanoi</div>

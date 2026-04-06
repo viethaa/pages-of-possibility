@@ -165,6 +165,13 @@
   box-shadow: var(--shadow-lg);
 }
 
+.ab-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Inner content */
 .ab-photo-inner {
   position: absolute;
@@ -297,13 +304,7 @@
 .ab-quote-avatar {
   width: 42px; height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--cyan) 0%, var(--sky-deep) 100%);
-  color: white;
-  font-weight: 800;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   flex-shrink: 0;
   box-shadow: 0 3px 10px rgba(47,181,212,0.3);
 }

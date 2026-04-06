@@ -1,229 +1,214 @@
-import Cloud from '../components/Cloud'
+import { useState } from 'react'
 import './Budget.css'
 
-const phases = [
+const TRIPS = [
   {
-    num: '3',
-    status: 'Completed',
-    accent: '#5DC068',
-    location: 'Na Phac Church & National Children\'s Hospital',
-    timeframe: 'Completed 2025',
-    total: '15,000,000',
-    items: [
-      { label: 'Prizes for competition participants', amount: '10,000,000' },
-      { label: 'Transportation costs',               amount: '2,000,000'  },
-      { label: 'Promotional materials & logistics',  amount: '3,000,000'  },
-    ],
+    num: '01',
+    title: 'Na Phac Trip 1',
+    date: '08 Dec 2024',
+    location: 'Na Phac Church, Bac Kan, Viet Nam',
+    books: 450,
+    members: 10,
+    photoLabel: 'Trip 1 Photos',
+    photoHref: '#',
+    accent: '#E85A50',
   },
   {
-    num: '4',
-    status: 'Completed',
-    accent: '#5DC068',
-    location: 'Writing Competitions — Multiple Locations',
-    timeframe: 'Completed 2025',
-    total: '55,000,000',
-    items: [
-      { label: 'Prizes for competition participants',       amount: '25,000,000' },
-      { label: 'Transportation costs',                     amount: '2,000,000'  },
-      { label: 'Promotional materials & hiring personnel', amount: '28,000,000' },
-    ],
+    num: '02',
+    title: 'Collaboration with Creation of Hearts',
+    date: '16 Feb 2025',
+    location: 'Endocrinology Center, National Children\u2019s Hospital, Hanoi',
+    books: 250,
+    members: 15,
+    photoLabel: 'Trip 2 Photos',
+    photoHref: '#',
+    accent: '#2FB5D4',
   },
   {
-    num: '5',
-    status: 'In Progress',
+    num: '03',
+    title: 'National Children\u2019s Hospital, Part 1',
+    date: '15 Mar 2025',
+    location: 'MRI Center, National Children\u2019s Hospital, Hanoi',
+    books: 450,
+    members: 22,
+    photoLabel: 'MRI Center Photos',
+    photoHref: '#',
+    accent: '#5DC068',
+  },
+  {
+    num: '04',
+    title: 'National Children\u2019s Hospital, Part 2',
+    date: '16 Mar 2025',
+    location: 'Emergency Medicine & Poison Control Dept., National Children\u2019s Hospital, Hanoi',
+    books: 450,
+    members: 22,
+    photoLabel: 'Emergency Medicine Photos',
+    photoHref: '#',
     accent: '#F5A820',
-    location: 'Việt Trì County, Phú Thọ — Elementary Schools',
-    timeframe: 'Aug–Oct 2025',
-    total: '25,000,000',
-    items: [
-      { label: 'Books',                      amount: '10,000,000' },
-      { label: 'Multimedia assets',          amount: '10,000,000' },
-      { label: 'Transportation & logistics', amount: '5,000,000'  },
-    ],
   },
   {
-    num: '6',
-    status: 'TBD',
+    num: '05',
+    title: 'National Children\u2019s Hospital, Part 3',
+    date: '16 Mar 2025',
+    location: 'Cardiology & Etorhinolaryngology Dept., National Children\u2019s Hospital, Hanoi',
+    books: 450,
+    members: 22,
+    photoLabel: 'Cardiology Photos',
+    photoHref: '#',
     accent: '#E85A50',
-    location: 'Additional Community Sites',
-    timeframe: 'To Be Determined',
-    total: '45,000,000',
-    items: [
-      { label: 'Books',                      amount: '30,000,000' },
-      { label: 'Multimedia assets',          amount: '10,000,000' },
-      { label: 'Transportation & logistics', amount: '5,000,000'  },
-    ],
-  },
-  {
-    num: '7',
-    status: 'TBD',
-    accent: '#E85A50',
-    location: 'Việt Trì County — Writing Competition',
-    timeframe: 'To Be Determined',
-    total: '55,000,000',
-    items: [
-      { label: 'Prizes for competition participants', amount: '35,000,000' },
-      { label: 'Transportation costs',               amount: '2,000,000'  },
-      { label: 'Promotional materials & logistics',  amount: '18,000,000' },
-    ],
   },
 ]
-
-const breakdown = [
-  { label: 'Phase 3', amount: 15, color: '#5DC068' },
-  { label: 'Phase 4', amount: 55, color: '#5DC068' },
-  { label: 'Phase 5', amount: 25, color: '#F5A820' },
-  { label: 'Phase 6', amount: 45, color: '#E85A50' },
-  { label: 'Phase 7', amount: 55, color: '#c0392b' },
-]
-const TOTAL = 212
-
-const STATUS_STYLE = {
-  'Completed':   { bg: 'rgba(93,192,104,0.13)', color: '#5DC068' },
-  'In Progress': { bg: 'rgba(245,168,32,0.13)', color: '#F5A820' },
-  'TBD':         { bg: 'rgba(232,90,80,0.12)',  color: '#E85A50' },
-}
 
 function PinIcon() {
   return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-      <circle cx="12" cy="10" r="3"/>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
     </svg>
   )
 }
 
-function ClockIcon() {
+function BookIcon() {
   return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/>
-      <polyline points="12 6 12 12 16 14"/>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
     </svg>
   )
 }
 
-export default function Budget() {
+function PeopleIcon() {
   return (
-    <section className="budget sky-bg" id="budget">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  )
+}
 
-      <Cloud variant={1} style={{ position:'absolute', width:'270px', top:'3%',    left:'-2%',   opacity:0.44, zIndex:0, animation:'cloud-b 17s ease-in-out infinite' }} />
-      <Cloud variant={4} style={{ position:'absolute', width:'300px', top:'8%',    right:'-1%',  opacity:0.36, zIndex:0, animation:'cloud-a 21s ease-in-out infinite' }} />
-      <Cloud variant={3} style={{ position:'absolute', width:'200px', top:'35%',   right:'3%',   opacity:0.28, zIndex:0, animation:'cloud-c 15s ease-in-out infinite' }} />
-      <Cloud variant={2} style={{ position:'absolute', width:'220px', top:'42%',   left:'1%',    opacity:0.26, zIndex:0, animation:'cloud-f 19s ease-in-out infinite' }} />
-      <Cloud variant={1} style={{ position:'absolute', width:'250px', bottom:'16%',left:'-1%',   opacity:0.32, zIndex:0, animation:'cloud-d 24s ease-in-out infinite' }} />
-      <Cloud variant={3} style={{ position:'absolute', width:'190px', bottom:'10%',right:'2%',   opacity:0.28, zIndex:0, animation:'cloud-e 13s ease-in-out infinite' }} />
-      <Cloud variant={4} style={{ position:'absolute', width:'280px', bottom:'3%', left:'20%',   opacity:0.22, zIndex:0, animation:'cloud-a 26s ease-in-out infinite' }} />
+function ArrowIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    </svg>
+  )
+}
 
-      {/* Wave bottom — sky → white for Support section */}
-      <div className="wave-bottom">
-        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+export default function Timeline() {
+  const [active, setActive] = useState(0)
+  const t = TRIPS[active]
+  const fillPct = (active / (TRIPS.length - 1)) * 100
+
+  return (
+    <section className="tl-section sky-bg" id="timeline">
+
+      <div className="wave-bottom tl-wave-bottom">
+        <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,45 C240,90 480,0 720,45 C960,90 1200,10 1440,45 L1440,90 L0,90 Z" fill="white" />
         </svg>
       </div>
 
-      <div className="container bp-wrap">
+      <div className="container tl-wrap">
 
-        {/* ── Header ── */}
-        <div className="bp-header" data-aos="fade-up">
-          <span className="section-label">Action Plan</span>
-          <h2 className="bp-title">Budget <em>Proposal</em></h2>
-          <p className="bp-subtitle">
-            Our phased approach ensures sustainable growth — each phase builds on the last,
-            expanding our reach and deepening our impact across Vietnam.
+        {/* Header */}
+        <div className="tl-header" data-aos="fade-up">
+          <span className="section-label">Our Journey</span>
+          <h2 className="tl-title">Trips &amp; <em>Milestones</em></h2>
+          <p className="tl-subtitle">
+            Click each stop to explore every trip we've made across Vietnam.
           </p>
         </div>
 
-        {/* ── Hero dashboard (old layout) ── */}
-        <div className="bp-hero" data-aos="fade-up" data-aos-delay="60">
-
-          <div className="bp-hero-top">
-            <div className="bp-hero-left">
-              <span className="bp-hero-eyebrow">Total Budget</span>
-              <div className="bp-hero-amount">212,000,000 <span>VND</span></div>
-            </div>
-            <div className="bp-hero-stats">
-              <div className="bp-hero-stat">
-                <span className="bp-hs-n">95M</span>
-                <span className="bp-hs-l">Completed</span>
-              </div>
-              <div className="bp-hero-divider" />
-              <div className="bp-hero-stat">
-                <span className="bp-hs-n">117M</span>
-                <span className="bp-hs-l">Upcoming</span>
-              </div>
-            </div>
+        {/* Journey rail */}
+        <div className="tl-rail" data-aos="fade-up" data-aos-delay="80">
+          {/* Track */}
+          <div className="tl-rail-track" aria-hidden="true">
+            <div className="tl-rail-fill" style={{ width: `${fillPct}%`, background: t.accent }} />
           </div>
 
-          {/* Stacked bar */}
-          <div className="bp-bar-track">
-            {breakdown.map(b => (
-              <div
-                key={b.label}
-                className="bp-bar-seg"
-                style={{ width: `${(b.amount / TOTAL) * 100}%`, background: b.color }}
-                data-tooltip={`${b.label} · ${b.amount}M VND`}
-              />
-            ))}
-          </div>
-
-          {/* Legend */}
-          <div className="bp-bar-legend">
-            {breakdown.map(b => (
-              <span key={b.label} className="bp-legend-item">
-                <span className="bp-legend-dot" style={{ background: b.color }} />
-                {b.label}
-              </span>
-            ))}
-          </div>
+          {TRIPS.map((trip, i) => (
+            <button
+              key={trip.num}
+              className={`tl-stop${i === active ? ' tl-stop--active' : ''}${i < active ? ' tl-stop--past' : ''}`}
+              style={{ '--accent': i === active ? trip.accent : 'var(--navy)' }}
+              onClick={() => setActive(i)}
+              aria-label={`Trip ${trip.num}: ${trip.title}`}
+            >
+              <span className="tl-stop-dot">{trip.num}</span>
+              <span className="tl-stop-date">{trip.date}</span>
+            </button>
+          ))}
         </div>
 
-        {/* ── Phase timeline ── */}
-        <div className="bp-phases">
-          {phases.map((p, i) => {
-            const st = STATUS_STYLE[p.status]
-            return (
-              <div
-                key={p.num}
-                className="bp-row"
-                style={{ '--accent': p.accent }}
-                data-aos="fade-up"
-                data-aos-delay={i * 60}
-              >
-                <div className="bp-row-left">
-                  <div className="bp-row-num">{p.num}</div>
-                  <span className="bp-row-status" style={{ background: st.bg, color: st.color }}>
-                    {p.status}
-                  </span>
-                </div>
+        {/* Detail panel */}
+        <div key={active} className="tl-detail" style={{ '--accent': t.accent }}>
 
-                <div className="bp-row-line" />
+          {/* Left */}
+          <div className="tl-detail-left">
+            <span className="tl-detail-bg-num" aria-hidden="true">{t.num}</span>
+            <div className="tl-detail-content">
+              <div className="tl-detail-eyebrow">
+                <span className="tl-detail-trip-label">Trip {t.num}</span>
+                <span className="tl-detail-date-pill">{t.date}</span>
+              </div>
+              <h3 className="tl-detail-title">{t.title}</h3>
+            </div>
+          </div>
 
-                <div className="bp-row-card">
-                  <div className="bp-row-card-top">
-                    <div className="bp-row-meta">
-                      <span className="bp-row-loc"><PinIcon />{p.location}</span>
-                      <span className="bp-row-time"><ClockIcon />{p.timeframe}</span>
-                    </div>
-                    <div className="bp-row-total-pill">
-                      <span className="bp-rtp-n">{p.total}</span>
-                      <span className="bp-rtp-u">VND</span>
-                    </div>
-                  </div>
-                  <div className="bp-row-items">
-                    {p.items.map(item => (
-                      <div key={item.label} className="bp-row-item">
-                        <span className="bp-ri-dot" />
-                        <span className="bp-ri-label">{item.label}</span>
-                        <span className="bp-ri-amount">{item.amount} <em>VND</em></span>
-                      </div>
-                    ))}
-                  </div>
+          {/* Right */}
+          <div className="tl-detail-right">
+            <div className="tl-info-list">
+              <div className="tl-info-row">
+                <span className="tl-info-icon"><PinIcon /></span>
+                <div>
+                  <span className="tl-info-label">Location</span>
+                  <span className="tl-info-val">{t.location}</span>
                 </div>
               </div>
-            )
-          })}
+              <div className="tl-info-row">
+                <span className="tl-info-icon"><BookIcon /></span>
+                <div>
+                  <span className="tl-info-label">Books Donated</span>
+                  <span className="tl-info-val">{t.books.toLocaleString()} books</span>
+                </div>
+              </div>
+              <div className="tl-info-row">
+                <span className="tl-info-icon"><PeopleIcon /></span>
+                <div>
+                  <span className="tl-info-label">Members Participated</span>
+                  <span className="tl-info-val">{t.members} members</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="tl-detail-foot">
+              <a href={t.photoHref} className="tl-cta">
+                {t.photoLabel} <ArrowIcon />
+              </a>
+              <div className="tl-nav">
+                <button
+                  className="tl-nav-btn"
+                  onClick={() => setActive(i => Math.max(0, i - 1))}
+                  disabled={active === 0}
+                  aria-label="Previous trip"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                  </svg>
+                </button>
+                <span className="tl-nav-count">{active + 1} / {TRIPS.length}</span>
+                <button
+                  className="tl-nav-btn"
+                  onClick={() => setActive(i => Math.min(TRIPS.length - 1, i + 1))}
+                  disabled={active === TRIPS.length - 1}
+                  aria-label="Next trip"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>

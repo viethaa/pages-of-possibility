@@ -9,7 +9,7 @@ const sections = [
   { id: 'team',      label: 'Team'        },
   { id: 'framework', label: 'Framework'   },
   { id: 'impact',    label: 'Our Story'   },
-  { id: 'budget',    label: 'Action Plan' },
+  { id: 'timeline',  label: 'Trips'       },
   { id: 'support',   label: 'Support Us'  },
 ]
 

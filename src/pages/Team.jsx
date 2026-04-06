@@ -7,6 +7,7 @@ const members = [
     role: 'President & Founder',
     accent: '#E85A50',
     photoGrad: 'linear-gradient(160deg, #3d1818 0%, #1B3070 100%)',
+    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/PANDA.PNG',
     description:
       'Oversees the vision and direction of the project, coordinates with partners, and ensures every initiative aligns with our mission. Founded the project in 11th grade at CISH.',
   },
@@ -16,6 +17,7 @@ const members = [
     role: 'Head of Marketing',
     accent: '#2FB5D4',
     photoGrad: 'linear-gradient(160deg, #082d3d 0%, #0D1E4E 100%)',
+    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/CHAUANH.jpg',
     description:
       'Leads promotional efforts, builds community awareness, and connects our work to a wider audience through creative campaigns and strategic outreach.',
   },
@@ -25,6 +27,7 @@ const members = [
     role: 'Head of Operations',
     accent: '#5DC068',
     photoGrad: 'linear-gradient(160deg, #0b2010 0%, #0D2A1A 100%)',
+    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/DANGVYLE.jpg',
     description:
       'Manages logistics, timelines, and resources — ensuring every event and book donation runs smoothly from planning through execution.',
   },
@@ -34,6 +37,7 @@ const members = [
     role: 'Head of Design',
     accent: '#F5A820',
     photoGrad: 'linear-gradient(160deg, #2d1c00 0%, #1B3070 100%)',
+    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/JENY.jpg',
     description:
       'Creates visual materials that capture our story and inspire participation, bringing warmth and creativity to every piece of POP\u2019s identity.',
   },
@@ -87,18 +91,14 @@ export default function Team() {
                 {/* Photo area */}
                 <div className="tm-photo">
                   <div className="tm-photo-bg" />
-                  {/* Ghost name watermark */}
+                  {m.photo
+                    ? <img src={m.photo} alt={m.name} className="tm-photo-img" />
+                    : <div className="tm-photo-placeholder">
+                        <div className="tm-camera"><CameraIcon /></div>
+                        <span className="tm-photo-hint">Photo coming soon</span>
+                      </div>
+                  }
                   <div className="tm-photo-watermark">{m.watermark}</div>
-                  {/* Placeholder content */}
-                  <div className="tm-photo-placeholder">
-                    <div className="tm-camera"><CameraIcon /></div>
-                    <span className="tm-photo-hint">Photo coming soon</span>
-                  </div>
-                  {/* Hover overlay */}
-                  <div className="tm-photo-add">
-                    <CameraIcon />
-                    <span>Add photo</span>
-                  </div>
                   {/* Role pill — top center of photo */}
                   <div className="tm-role-pill">{m.role}</div>
                 </div>
@@ -115,26 +115,11 @@ export default function Team() {
 
         {/* ══ Group photo ══ */}
         <div className="tm-group" data-aos="fade-up">
-          <div className="tm-group-orb tm-go-1" />
-          <div className="tm-group-orb tm-go-2" />
-          <div className="tm-group-orb tm-go-3" />
-          <div className="tm-group-content">
-            <div className="tm-group-camera">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                <circle cx="12" cy="13" r="4"/>
-              </svg>
-            </div>
-            <div>
-              <div className="tm-group-title">The Whole Team</div>
-              <div className="tm-group-sub">Group photo coming soon — watch this space</div>
-            </div>
-          </div>
-          {/* Dot grid decoration */}
-          <div className="tm-group-dots" aria-hidden="true">
-            {Array.from({ length: 40 }).map((_, i) => <span key={i} />)}
-          </div>
+          <img
+            src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/TEAMPHOTO.JPG"
+            alt="The Whole Team"
+            className="tm-group-img"
+          />
         </div>
 
         {/* ══ Volunteers ══ */}

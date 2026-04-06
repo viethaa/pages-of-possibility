@@ -108,69 +108,30 @@
   animation: ring-spin 28s linear infinite;
 }
 
-/* ── Placeholder base ── */
-.ov-placeholder {
+/* ── Photo blob containers ── */
+.ov-photo {
   width: 100%;
-  background: linear-gradient(135deg, var(--sky-light) 0%, #c8e8f6 50%, #ddf2fb 100%);
   border-radius: 55% 45% 50% 50% / 48% 52% 50% 52%;
   overflow: hidden;
   animation: blob-morph 10s ease-in-out infinite;
   position: relative;
+  box-shadow: 0 12px 40px rgba(27, 48, 112, 0.12);
 }
 
-.ov-placeholder-main {
+.ov-photo-main {
   aspect-ratio: 4 / 2.9;
 }
 
-/* Camera hint on hover */
-.ov-placeholder::after {
-  content: '📷  Add photo';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: rgba(27,48,112,0.45);
-  opacity: 0;
-  transition: opacity 0.25s;
-  letter-spacing: 0.04em;
-}
-.ov-placeholder:hover::after { opacity: 1; }
-
-/* ── Placeholder inner content ── */
-.ov-ph-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  pointer-events: none;
+.ov-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.ov-ph-icon {
-  font-size: 2.5rem;
-  filter: drop-shadow(0 2px 8px rgba(27,48,112,0.12));
-}
-
-.ov-ph-text {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--navy);
-  opacity: 0.65;
-  text-align: center;
-}
-
-.ov-ph-sub {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  font-style: italic;
-  border: 1.5px dashed rgba(47,181,212,0.4);
-  border-radius: var(--radius-full);
-  padding: 0.2rem 0.75rem;
+.ov-photo-main img {
+  transform: scale(1.25) translateY(-10%);
+  transform-origin: center center;
 }
 
 /* ── Secondary image row ── */
@@ -180,19 +141,17 @@
   gap: 1rem;
 }
 
-.ov-img-sm .ov-placeholder {
+.ov-photo-sm {
   aspect-ratio: 1 / 0.88;
   border-radius: 50% 50% 45% 55% / 52% 48% 55% 45%;
   animation: blob-morph-2 12s ease-in-out infinite;
 }
 
-.ov-img-sm-1 .ov-placeholder {
-  background: linear-gradient(135deg, #FFF0EF 0%, #fde8e6 60%, #fbd5d1 100%);
+.ov-photo-sm-1 {
   animation-delay: -3s;
 }
 
-.ov-img-sm-2 .ov-placeholder {
-  background: linear-gradient(135deg, var(--yellow-light) 0%, #fef0c8 60%, #fde8a0 100%);
+.ov-photo-sm-2 {
   animation-delay: -6s;
 }
 
