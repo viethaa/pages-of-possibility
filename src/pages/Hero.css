@@ -70,12 +70,6 @@
   50%      { box-shadow: 0 0 0 7px rgba(245,168,32,.12); }
 }
 
-/* Scroll wheel */
-@keyframes wheelDrop {
-  0%   { opacity: 1; transform: translateY(0);    }
-  75%  { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 0; transform: translateY(0);    }
-}
 
 /* ══════════════════════════════════════════════════════
    HERO SHELL
@@ -222,7 +216,7 @@
 /* Logo graphic */
 .hero-logo {
   width: min(220px, 42vw);
-  margin-bottom: -0.75rem;
+  margin-bottom: -3.15rem;
   animation: floatLogo 8s ease-in-out infinite;
   filter:
     drop-shadow(0 24px 56px rgba(2,51,106,.38))
@@ -238,7 +232,7 @@
   color: #fff;
   line-height: 1;
   letter-spacing: -.02em;
-  margin: 0 0 1.25rem;
+  margin: -0.7rem 0 1rem;
   text-shadow:
     0 4px 32px rgba(2,51,106,.45),
     0 1px 0   rgba(255,255,255,.15),
@@ -250,7 +244,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  margin: 0.6rem 0 1.1rem;
+  margin: 0.7rem 0 1rem;
 }
 
 .hero-accent-dot {
@@ -271,14 +265,15 @@
 
 /* Tagline */
 .hero-tagline {
-  font-size: clamp(.85rem, 1.6vw, 1rem);
-  font-weight: 500;
-  color: rgba(255,255,255,.55);
-  line-height: 1.6;
-  letter-spacing: .12em;
+  font-size: clamp(1rem, 1.9vw, 1.2rem);
+  font-weight: 600;
+  color: rgba(255,255,255,.92);
+  line-height: 1.55;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(0,0,0,.15);
+  text-shadow: 0 2px 12px rgba(0,0,0,.22);
   margin: 0;
+  max-width: 56ch;
 }
 
 /* Stats pill */
@@ -523,44 +518,6 @@
   z-index: 5;
 }
 
-/* ══════════════════════════════════════════════════════
-   SCROLL HINT  (z-index 11, above everything)
-══════════════════════════════════════════════════════ */
-
-.scroll-hint {
-  position: absolute;
-  bottom: 4.5rem;   /* low — just above the white fade, near cloud floor */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 11;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .45rem;
-  pointer-events: none;
-}
-.scroll-mouse {
-  width: 22px; height: 36px;
-  border: 2px solid rgba(255,255,255,.52);
-  border-radius: 11px;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
-}
-.scroll-wheel {
-  width: 3px; height: 7px;
-  background: rgba(255,255,255,.8);
-  border-radius: 2px;
-  animation: wheelDrop 1.9s ease infinite;
-}
-.scroll-hint span {
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.6);
-  text-shadow: 0 1px 4px rgba(0,0,0,.2);
-}
 
 /* ══════════════════════════════════════════════════════
    RESPONSIVE

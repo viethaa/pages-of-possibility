@@ -27,7 +27,7 @@ const members = [
     role: 'Head of Operations',
     accent: '#5DC068',
     photoGrad: 'linear-gradient(160deg, #0b2010 0%, #0D2A1A 100%)',
-    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/DANGVYLE.jpg',
+    photo: 'https://hearts2hands.s3.ap-southeast-2.amazonaws.com/pop/leFINAL.JPG',
     description:
       'Manages logistics, timelines, and resources — ensuring every event and book donation runs smoothly from planning through execution.',
   },

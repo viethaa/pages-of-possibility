@@ -115,13 +115,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll hint */}
-      <div className="scroll-hint">
-        <div className="scroll-mouse">
-          <div className="scroll-wheel" />
-        </div>
-        <span>Scroll</span>
-      </div>
 
       {/* ── Cloud bank ── */}
       <div className="cloud-bank" aria-hidden="true">
