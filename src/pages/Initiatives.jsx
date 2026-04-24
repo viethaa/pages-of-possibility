@@ -117,7 +117,9 @@ function CarouselIcon() {
 function LivePost({ post, index }) {
   const isVideo    = post.mediaType === 'VIDEO'
   const isCarousel = post.mediaType === 'CAROUSEL_ALBUM'
-  const imgSrc     = isVideo ? post.thumbnailUrl : post.mediaUrl
+  const imgSrc     = isVideo
+    ? (post.sizes?.medium?.mediaUrl ?? post.thumbnailUrl ?? post.mediaUrl)
+    : (post.sizes?.medium?.mediaUrl ?? post.mediaUrl)
   const caption    = post.caption ?? ''
 
   return (
